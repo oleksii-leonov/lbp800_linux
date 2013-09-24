@@ -1,0 +1,17 @@
+1 - Implement CUPS error messages
+   ==> Could not use cups backend->filter messages, don't know why
+
+2 - Maybe e variant for USB printers
+
+
+3 - Implement PAPER-OUT and PAPER-JAM (needs point 1 working)
+
+
+4 - Implement special printer functions (half tone, resolution...)
+    (needs point 1 working)
+
+5 - Create ubuntu package
+
+
+6 - Test with more distributions (currently only Ubuntu Feisty)
+

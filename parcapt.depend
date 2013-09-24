@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1189097098 source:/home/massimo/sources/drivers/lbp800/errcapt.c
+	<stdarg.h>
+	<stdio.h>
+	"errcapt.h"
+
+1189096901 /home/massimo/sources/drivers/lbp800/errcapt.h
+

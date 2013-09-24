@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="lbp800" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/lbp800" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-Wall" />
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/lbp800" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+		</Compiler>
+		<Unit filename="COPYING" />
+		<Unit filename="Makefile" />
+		<Unit filename="README" />
+		<Unit filename="SPECS" />
+		<Unit filename="THANKS" />
+		<Unit filename="TODO" />
+		<Unit filename="bmcapt.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="bmcapt.h" />
+		<Unit filename="errcapt.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="errcapt.h" />
+		<Unit filename="foo2lbp800-wrapper" />
+		<Unit filename="lbp800-print" />
+		<Unit filename="lbp800.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="lbp800.h" />
+		<Unit filename="machine.h" />
+		<Unit filename="ppd/Canon-LBP-800.ppd" />
+		<Extensions>
+			<code_completion />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

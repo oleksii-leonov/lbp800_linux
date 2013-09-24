@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="parcapt" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/parcapt" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/parcapt" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+		</Compiler>
+		<Unit filename="Makefile" />
+		<Unit filename="README" />
+		<Unit filename="SPECS" />
+		<Unit filename="THANKS" />
+		<Unit filename="TODO" />
+		<Unit filename="errcapt.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="errcapt.h" />
+		<Unit filename="hlcapt.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="hlcapt.h" />
+		<Unit filename="llcapt.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="llcapt.h" />
+		<Unit filename="machine.h" />
+		<Unit filename="parcapt.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="parcapt.h" />
+		<Unit filename="pkcapt.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="pkcapt.h" />
+		<Unit filename="pport.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="pport.h" />
+		<Unit filename="timcapt.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="timcapt.h" />
+		<Extensions>
+			<code_completion />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
