@@ -37,7 +37,7 @@
 #include "hlcapt.h"
 #include "lbp800.h"
 #include <unistd.h>
-// #define DEBUG_WaitForStatus
+#define DEBUG_WaitForStatus
 // BUFFER DEI VALORI RITORNATI DALLA STAMPANTE DOPO UN COMANDO
 BYTE		RETCNT;
 BYTE		RETBUF[256];
