@@ -1,0 +1,239 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Canon LBP 800 driver for Linux by aleksejleonov</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Canon LBP 800 driver for Linux</h1>
+        <p></p>
+
+        <p class="view"><a href="https://github.com/aleksejleonov/lbp800_linux">View the Project on GitHub <small>aleksejleonov/lbp800_linux</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/aleksejleonov/lbp800_linux/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/aleksejleonov/lbp800_linux/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/aleksejleonov/lbp800_linux">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a name="canon-lbp800-driver-for-linux" class="anchor" href="#canon-lbp800-driver-for-linux"><span class="octicon octicon-link"></span></a>Canon LBP800 driver for linux</h1>
+
+<p>Canon LBP 800 linux drivers.<br>
+Tested on Ubuntu 10.10, 12.04, 13.04.<br>
+Version 0.1.8.b0</p>
+
+<h2>
+<a name="what-is-this" class="anchor" href="#what-is-this"><span class="octicon octicon-link"></span></a>What is this</h2>
+
+<p>This is driver for Canon LBP800 printer (with CAPT protocol via parallel port).</p>
+
+<h2>
+<a name="how-to-install-on-ubuntu-1304" class="anchor" href="#how-to-install-on-ubuntu-1304"><span class="octicon octicon-link"></span></a>How to install on Ubuntu 13.04</h2>
+
+<p>I write this manual after I spend a whole day to setup this printer on Ubuntu :)<br>
+If you have some ideas or recommendations to improve this manual — fill free to drop me a line to <a href="mailto:mail@aleksejleonov.com">mail@aleksejleonov.com</a>.</p>
+
+<h4>
+<a name="0-check-bios-settings" class="anchor" href="#0-check-bios-settings"><span class="octicon octicon-link"></span></a>0. Check BIOS settings</h4>
+
+<p>Your parallel port settings should be:</p>
+
+<ul>
+<li>Parallel port must be enabled.</li>
+<li>
+<strong>Mode: EPP</strong> — very important.</li>
+</ul><p>Also, I have next options and it works for me (but other options, like I/O 278 or IRQ 5 should also work fine):</p>
+
+<ul>
+<li>I/O Address: 378</li>
+<li>IRQ: 7</li>
+</ul><h4>
+<a name="1-download-and-unpack-driver-sources" class="anchor" href="#1-download-and-unpack-driver-sources"><span class="octicon octicon-link"></span></a>1. Download and unpack driver sources</h4>
+
+<div class="highlight highlight-bash"><pre><span class="nb">cd</span> ~
+mkdir lbp800 <span class="o">&amp;&amp;</span> <span class="nb">cd </span>lbp800
+wget https://github.com/aleksejleonov/lbp800_linux/archive/0.1.8.b0.tar.gz
+tar zxf 0.1.8.b0.tar.gz <span class="o">&amp;&amp;</span> <span class="nb">cd </span>lbp800_linux-0.1.8.b0
+</pre></div>
+
+<h4>
+<a name="2-install-packages-that-will-be-needed-to-compile-driver" class="anchor" href="#2-install-packages-that-will-be-needed-to-compile-driver"><span class="octicon octicon-link"></span></a>2. Install packages that will be needed to compile driver</h4>
+
+<div class="highlight highlight-bash"><pre>sudo apt-get install build-essential
+sudo apt-get install libcups2-dev
+</pre></div>
+
+<h4>
+<a name="3-remove-libsane-hpaio-package" class="anchor" href="#3-remove-libsane-hpaio-package"><span class="octicon octicon-link"></span></a>3. Remove libsane-hpaio package</h4>
+
+<p>libsane-hpaio package can try to use parallel port (/dev/lp0) and this can lead to conflicts.</p>
+
+<div class="highlight highlight-bash"><pre>sudo apt-get purge libsane-hpaio
+</pre></div>
+
+<h4>
+<a name="4-make--install-driver" class="anchor" href="#4-make--install-driver"><span class="octicon octicon-link"></span></a>4. Make &amp; Install driver</h4>
+
+<div class="highlight highlight-bash"><pre><span class="nb">cd</span> ~/lbp800/lbp800_linux-0.1.8.b0
+make
+sudo make install
+</pre></div>
+
+<h4>
+<a name="5-check-parallel-port-modules" class="anchor" href="#5-check-parallel-port-modules"><span class="octicon octicon-link"></span></a>5. Check parallel port modules</h4>
+
+<p>You need to check that <strong>lp</strong>, <strong>ppdev</strong>, <strong>parport_pc</strong> modules are loaded and works.</p>
+
+<div class="highlight highlight-bash"><pre>lsmod | grep lp
+<span class="c">################################</span>
+<span class="c"># You have get something like: #</span>
+<span class="c">################################</span>
+<span class="c">#</span>
+<span class="c"># lp                     13299  0</span>
+<span class="c"># parport                40753  3 lp,ppdev,parport_pc</span>
+
+lsmod | grep ppdev
+<span class="c">################################</span>
+<span class="c"># You have get something like: #</span>
+<span class="c">################################</span>
+<span class="c">#</span>
+<span class="c"># ppdev                  12817  0</span>
+<span class="c"># parport                40753  3 lp,ppdev,parport_pc</span>
+
+lsmod | grep parport_pc
+<span class="c">################################</span>
+<span class="c"># You have get something like: #</span>
+<span class="c">################################</span>
+<span class="c">#</span>
+<span class="c"># parport_pc             27504  1</span>
+<span class="c"># parport                40753  3 lp,ppdev,parport_pc</span>
+</pre></div>
+
+<p>If some of this modules missed in output, you need to add this module to <code>/etc/modules</code>.<br>
+Example (if <strong>parport_pc</strong> module is missed):</p>
+
+<div class="highlight highlight-bash"><pre>lsmod | grep parport_pc
+<span class="c"># You have no output -- module missed</span>
+
+sudo nano /etc/modules
+<span class="c">#####################################################</span>
+<span class="c"># Add "parport_pc" as new string at the end of file #</span>
+<span class="c">#####################################################</span>
+</pre></div>
+
+<h4>
+<a name="6-add-users-to-lp-group" class="anchor" href="#6-add-users-to-lp-group"><span class="octicon octicon-link"></span></a>6. Add users to "lp" group</h4>
+
+<p>You should add all users that will print on LBP800 to <strong>lp</strong> linux group.</p>
+
+<div class="highlight highlight-bash"><pre><span class="c">##</span>
+<span class="c"># Change username1, username2 to real account names</span>
+<span class="c">##</span>
+sudo usermod -a -G lp username1
+sudo usermod -a -G lp username2
+</pre></div>
+
+<h4>
+<a name="7-reboot" class="anchor" href="#7-reboot"><span class="octicon octicon-link"></span></a>7. Reboot</h4>
+
+<p>Don't forget to turn on printer before PC!</p>
+
+<div class="highlight highlight-bash"><pre>sudo reboot
+</pre></div>
+
+<h4>
+<a name="8-check-printer" class="anchor" href="#8-check-printer"><span class="octicon octicon-link"></span></a>8. Check printer</h4>
+
+<p>Check that linux can see your printer:</p>
+
+<div class="highlight highlight-bash"><pre>sudo cat /proc/sys/dev/parport/parport*/autoprobe*
+<span class="c">##</span>
+<span class="c"># You should get:</span>
+<span class="c">##</span>
+<span class="c"># CLASS:PRINTER;</span>
+<span class="c"># MODEL:LBP-800;</span>
+<span class="c"># MANUFACTURER:Canon;</span>
+<span class="c"># DESCRIPTION:Canon LBP-800;</span>
+<span class="c"># COMMAND SET:CAPT;</span>
+
+sudo /usr/lib/cups/backend/parallel
+<span class="c">##</span>
+<span class="c"># You should get:</span>
+<span class="c">##</span>
+<span class="c"># direct parallel:/dev/lp0 "Canon LBP-800" "Canon LBP-800 LPT #1"</span>
+<span class="c"># "MFG:Canon;MDL:LBP-800;CMD:CAPT;VER:1.0;CLS:PRINTER;DES:Canon LBP-800" ""</span>
+</pre></div>
+
+<h4>
+<a name="9-add-printer" class="anchor" href="#9-add-printer"><span class="octicon octicon-link"></span></a>9. Add printer</h4>
+
+<p>Open System settings → Printers. 
+If Canon LBP800 appears in list, add it.</p>
+
+<p>Else, if you can't find Canon LBP800 in list:</p>
+
+<ul>
+<li>Choose "Add by URI" option and set URI: <strong>parcapt:/dev/parport0</strong> (parcapt:, not parallel:).</li>
+<li>When you will be asked about driver, find "Canon" in printers list, then choose LBP800 model. (Also, you can choose PPD file from ppd folder in ~/lbp800/lbp800_linux-0.1.8.b0).</li>
+</ul><p>Try to print test page. 
+Everything should works :)</p>
+
+<h2>
+<a name="debugging" class="anchor" href="#debugging"><span class="octicon octicon-link"></span></a>Debugging</h2>
+
+<p>If printer still doesn't works — try to check all steps.</p>
+
+<p>Also you can obtain useful info from kernel log:</p>
+
+<div class="highlight highlight-bash"><pre>dmesg | grep lp
+dmesg | grep parport
+</pre></div>
+
+<p>If you have ubuntu with Apparmor (it can blocks cupsd) you should make next:</p>
+
+<div class="highlight highlight-bash"><pre>sudo aa-complain cupsd
+</pre></div>
+
+<h2>
+<a name="other-printers" class="anchor" href="#other-printers"><span class="octicon octicon-link"></span></a>Other printers</h2>
+
+<p>If you have Canon printer with USB (like LBP810, LBP1120, etc.) try to install official Canon CAPT Drivers for linux.</p>
+
+<ul>
+<li>Detailed instructions for Ubuntu 10.04, 11.10, 12.04: <a href="https://help.ubuntu.com/community/CanonCaptDrv190">https://help.ubuntu.com/community/CanonCaptDrv190</a>.</li>
+<li>Last version of Canon CAPT Drivers from official site (as on September 2013, ver. 2.6): <a href="http://support-au.canon.com.au/contents/AU/EN/0100459602.html">http://support-au.canon.com.au/contents/AU/EN/0100459602.html</a>.</li>
+<li>Automated script to install Canon CAPT Drivers ver. 2.20 <a href="https://github.com/raducotescu/CanonCAPTdriver">https://github.com/raducotescu/CanonCAPTdriver</a>.</li>
+</ul><h2>
+<a name="thanks" class="anchor" href="#thanks"><span class="octicon octicon-link"></span></a>Thanks</h2>
+
+<ul>
+<li>Iamlolive, Fabux and other people from <a href="http://doc.ubuntu-fr.org/imprimante_canon_lbp800">http://doc.ubuntu-fr.org/imprimante_canon_lbp800</a>. They write great wiki (in french :), and give link to 0.1.8.b0 version of this driver.</li>
+<li>Owner of <a href="http://www.veneto.com/lbp800/lbp800.html">http://www.veneto.com/lbp800/lbp800.html</a> for 0.1.2 version. (Now this site isn't available).</li>
+<li>Rildo Pragana (<a href="http://pragana.net">http://pragana.net</a>), for his driver for another
+GDI winprinter (Samsung ML-85G).</li>
+<li>Nicolas Boichat <a href="mailto:nicolas@boichat.ch">nicolas@boichat.ch</a>, for his driver for canon
+LBP-810 USB GDI printer.</li>
+</ul>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/aleksejleonov">aleksejleonov</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
