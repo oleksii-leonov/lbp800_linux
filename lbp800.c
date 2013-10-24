@@ -37,7 +37,7 @@
 // PROGRAMMA PRINCIPALE
 int main(int argc, char** argv)
 {
-  char c;
+  int c;
   fprintf(stderr,"lbp800:main is here\n");
   // BITMAP SORGENTE
   TSourceBitmap Bitmap;
@@ -76,6 +76,10 @@ int main(int argc, char** argv)
         }
         break;
 
+      default:
+        fprintf(stderr, "Usage: %s [-t topskip] [-l leftskip] [-f file]\n",
+                argv[0]);
+        exit(EXIT_FAILURE);
     } // END switch()
   } // END while
 
