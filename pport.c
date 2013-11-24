@@ -49,7 +49,7 @@ inline int Parport_Open(char *DeviceName)
   Device = open (DeviceName, O_RDWR);
 //    Device = open (DeviceName, O_RDWR|O_EXCL);
   if(Device == -1){
-    fprintf(stderr, "DEBUG - pport:Parport_Open Can not open %s \n",DeviceName);
+    fprintf(stderr, "ERROR: Parport_Open Can not open %s\n", DeviceName);
     return Device;
   }
 //    sleep(2);
@@ -66,13 +66,13 @@ inline int Parport_Open(char *DeviceName)
   
   if (ioctl (Device, PPCLAIM))
   {
-   fprintf(stderr, "DEBUG - pport:Parport_Open Can not claim\n");
+    perror("ERROR: Parport_Open Can not claim");
     close (Device);
     return -1;
   }
 
    ioctl (Device, PPGETMODE, &bCurrentPortMode);
-    fprintf(stderr, "DEBUG - pport:Parport_Open PPGETMODE  %04Xh\n",(int)bCurrentPortMode);
+    fprintf(stderr, "ERROR: Parport_Open PPGETMODE %04Xh\n", (int) bCurrentPortMode);
   
   return Device;
 

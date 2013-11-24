@@ -18,13 +18,6 @@
 #*
 #* Authors: Massimo Del Fedele <max@veneto.com>
 
-echo "CMDLINE : $@\n\n" > /tmp/pippo-filter-1.txt
-#cat > /tmp/pippo-filter-2.txt
-#return 0;
-#gs -q -dNOPAUSE -dPARANOIDSAFER -dBATCH -r600x600 -sPAPERSIZE=a4 -sDEVICE=pbmraw -sOutputFile=- -
-#   1> /tmp/capt.log 2>&1
-gs -q -dNOPAUSE -dPARANOIDSAFER -dBATCH -r600x600 -sDEVICE=pbmraw -sOutputFile="|lbp800 -t 110 -l 110" -
-#   1> /tmp/capt.log 2>&1
-
-
-return 0;
+gs -q -dNOPAUSE -dPARANOIDSAFER -dBATCH -r600x600 -sDEVICE=pbmraw \
+    -sOutputFile=- - \
+    | lbp800 -t 110 -l 110
