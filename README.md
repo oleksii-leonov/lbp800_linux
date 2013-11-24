@@ -2,14 +2,14 @@ Canon LBP800 driver for linux
 ============
 
 Canon LBP 800 linux drivers.  
-Tested on Ubuntu 10.10, 12.04, 13.04.  
-Version 0.1.8.b0
+Tested on Ubuntu 10.10, 12.04, 13.04, 13.10.  
+Version 0.1.9
 
 What is this
 --------
 This is driver for Canon LBP800 printer (with CAPT protocol via parallel port).
 
-How to install on Ubuntu 13.04
+How to install on Ubuntu
 --------
 
 I write this manual after I spend a whole day to setup this printer on Ubuntu :)  
@@ -30,8 +30,8 @@ Also, I have next options and it works for me (but other options, like I/O 278 o
 ```bash
 cd ~
 mkdir lbp800 && cd lbp800
-wget https://github.com/aleksejleonov/lbp800_linux/archive/0.1.8.b0.tar.gz
-tar zxf 0.1.8.b0.tar.gz && cd lbp800_linux-0.1.8.b0
+wget https://github.com/aleksejleonov/lbp800_linux/archive/0.1.9.tar.gz
+tar zxf 0.1.9.tar.gz && cd lbp800_linux-0.1.9
 ```
 
 #### 2. Install packages that will be needed to compile driver
@@ -52,7 +52,7 @@ sudo apt-get purge libsane-hpaio
 #### 4. Make & Install driver
 
 ```bash
-cd ~/lbp800/lbp800_linux-0.1.8.b0
+cd ~/lbp800/lbp800_linux-0.1.9
 make
 sudo make install
 ```
@@ -150,7 +150,7 @@ If Canon LBP800 appears in list, add it.
 
 Else, if you can't find Canon LBP800 in list:
 * Choose "Add by URI" option and set URI: **parcapt:/dev/parport0** (parcapt:, not parallel:).
-* When you will be asked about driver, find "Canon" in printers list, then choose LBP800 model. (Also, you can choose PPD file from ppd folder in ~/lbp800/lbp800_linux-0.1.8.b0).
+* When you will be asked about driver, find "Canon" in printers list, then choose LBP800 model. (Also, you can choose PPD file from ppd folder in ~/lbp800/lbp800_linux-0.1.9).
 
 Try to print test page. 
 Everything should works :)
@@ -182,9 +182,9 @@ If you have Canon printer with USB (like LBP810, LBP1120, etc.) try to install o
 
 Thanks
 --------
-* Iamlolive, Fabux and other people from [http://doc.ubuntu-fr.org/imprimante_canon_lbp800](http://doc.ubuntu-fr.org/imprimante_canon_lbp800). They write great wiki (in french :), and give link to 0.1.8.b0 version of this driver.
-* Owner of [http://www.veneto.com/lbp800/lbp800.html](http://www.veneto.com/lbp800/lbp800.html) for 0.1.2 version. (Now this site isn't available).
-* Rildo Pragana ([http://pragana.net](http://pragana.net)), for his driver for another
-  GDI winprinter (Samsung ML-85G).
-* Nicolas Boichat <nicolas@boichat.ch>, for his driver for canon
-  LBP-810 USB GDI printer.
+* **Teythoon** ([https://github.com/teythoon](https://github.com/teythoon)) for contributing to this repo.
+* **Iamlolive**, **Fabux** and other people from [http://doc.ubuntu-fr.org/imprimante_canon_lbp800](http://doc.ubuntu-fr.org/imprimante_canon_lbp800). They write great wiki (in french :), and give link to 0.1.8.b0 version of this driver.
+* **Sidorov Anonymous** (find this name in old Readme file for 0.1.8.b0 version, canon_lbp800driver_0.1.8.b0_linux 20101119; Some page checks are improved).
+* **Massimo Del Fedele** (<max@veneto.com>), who actually created driver for LBP800. Also he is owner of [http://www.veneto.com/lbp800/lbp800.html](http://www.veneto.com/lbp800/lbp800.html) for 0.1.2 version. (Now this site isn't available).
+* **Rildo Pragana** ([http://pragana.net](http://pragana.net)), for his driver for another GDI winprinter (Samsung ML-85G).
+* **Nicolas Boichat** (<nicolas@boichat.ch>), for his driver for canon LBP-810 USB GDI printer.
