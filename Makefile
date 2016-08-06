@@ -2,7 +2,7 @@
 # Verona, August 2007 -- Massimo Del Fedele
 # Adapted from Samsung ML-85P driver by Rildo Pragana
 
-CFLAGS ?= -O3 -Wall
+CFLAGS ?= -O3 -Wall -std=gnu90
 
 TARGETS=lbp800 parcapt
 
