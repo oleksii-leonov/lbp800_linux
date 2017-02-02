@@ -2,8 +2,10 @@ Canon LBP800 driver for linux
 ============
 
 Canon LBP 800 linux drivers.  
-Tested on Ubuntu 10.10, 12.04, 13.04, 13.10.  
-Version 0.1.9
+Tested on Ubuntu 10.10, 12.04, 13.04, 13.10.
+Also should works with newer Ubuntu (14.04, 15.04, 15.10, 16.04, etc.).
+
+Version 0.1.10
 
 What is this
 --------
@@ -13,7 +15,8 @@ How to install on Ubuntu
 --------
 
 I write this manual after I spend a whole day to setup this printer on Ubuntu :)  
-If you have some ideas or recommendations to improve this manual — fill free to drop me a line to mail@aleksejleonov.com.
+If you want to make bug report or contribution — please open an issue or PR in this repo.
+Also, fill free to drop me a line to mail@aleksejleonov.com.
 
 #### 0. Check BIOS settings
 
@@ -30,8 +33,8 @@ Also, I have next options and it works for me (but other options, like I/O 278 o
 ```bash
 cd ~
 mkdir lbp800 && cd lbp800
-wget https://github.com/aleksejleonov/lbp800_linux/archive/0.1.9.tar.gz
-tar zxf 0.1.9.tar.gz && cd lbp800_linux-0.1.9
+wget https://github.com/aleksejleonov/lbp800_linux/archive/0.1.10.tar.gz
+tar zxf 0.1.10.tar.gz && cd lbp800_linux-0.1.10
 ```
 
 #### 2. Install packages that will be needed to compile driver
@@ -52,7 +55,7 @@ sudo apt-get purge libsane-hpaio
 #### 4. Make & Install driver
 
 ```bash
-cd ~/lbp800/lbp800_linux-0.1.9
+cd ~/lbp800/lbp800_linux-0.1.10
 make
 sudo make install
 ```
@@ -150,7 +153,7 @@ If Canon LBP800 appears in list, add it.
 
 Else, if you can't find Canon LBP800 in list:
 * Choose "Add by URI" option and set URI: **parcapt:/dev/parport0** (parcapt:, not parallel:).
-* When you will be asked about driver, find "Canon" in printers list, then choose LBP800 model. (Also, you can choose PPD file from ppd folder in ~/lbp800/lbp800_linux-0.1.9).
+* When you will be asked about driver, find "Canon" in printers list, then choose LBP800 model. (Also, you can choose PPD file from ppd folder in ~/lbp800/lbp800_linux-0.1.10).
 
 Try to print test page. 
 Everything should works :)
