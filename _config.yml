@@ -1,0 +1,8 @@
+title: Canon LBP 800 driver for Linux
+description: 
+google_analytics: 
+show_downloads: true
+theme: jekyll-theme-minimal
+
+gems:
+  - jekyll-mentions
