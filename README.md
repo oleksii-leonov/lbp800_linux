@@ -16,7 +16,7 @@ How to install on Ubuntu
 
 I write this manual after I spend a whole day to setup this printer on Ubuntu :)  
 If you want to make bug report or contribution — please open an issue or PR in this repo.
-Also, fill free to drop me a line to mail@aleksejleonov.com.
+Also, fill free to drop me a line to mail@oleksiileonov.com.
 
 #### 0. Check BIOS settings
 
